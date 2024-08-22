@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    build:
+      context: ./database
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    networks:
+      - my_network
+    ports:
+      - "5433:5432"
+  
+  dbeaver:
+    image: dbeaver/cloudbeaver
+    container_name: dbeaver_db
+    networks:
+      - my_network
+    ports:
+      - "8978:8978"
+    environment:
+      - DISPLAY=:0
+
+      
+networks:
+  my_network:
+    driver: bridge
