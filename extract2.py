@@ -1,14 +1,14 @@
 import requests
 import pandas as pd
 
-df = pd.read_csv('modelos_fipe2.csv', encoding='utf-8')
+df = pd.read_csv('./csv/modelos_fipe2.csv', encoding='utf-8')
 
 final_results = []
 initial_url = 'https://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModeloPeloCodigoFipe'
 final_url = 'https://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros'
 reference_table_code = 312
 vehicle_type_code = 1
-
+csv_file_path = './csv/final_results.csv'
 
 for index, row in df.iterrows():
     fipe_code = row['Código FIPE']
@@ -65,6 +65,6 @@ for index, row in df.iterrows():
 
 
 df_final_results = pd.DataFrame(final_results)
-df_final_results.to_csv('final_results.csv', index=False, encoding='utf-8')
+df_final_results.to_csv(csv_file_path, index=False, encoding='utf-8')
 
 print("Concluído")

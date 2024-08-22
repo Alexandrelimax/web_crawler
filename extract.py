@@ -35,7 +35,7 @@ def save_to_csv(data, file_path):
 
 def main():
     html_file_path = 'index.html'
-    csv_file_path = 'modelos_fipe.csv'
+    csv_file_path = './csv/modelos_fipe.csv'
 
     html_content = read_html_file(html_file_path)
     data = extract_table_data(html_content)
